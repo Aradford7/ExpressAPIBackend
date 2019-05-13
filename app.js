@@ -10,7 +10,7 @@ require('./db/db')
 
 console.log(process.env.MY_SECRET)
 
-const apiRouter = require('./routes/api');
+const marvelRouter = require('./routes/marvelapi');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -22,8 +22,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/v1', apiRouter);
+// app.use('/home', marvelRouter);
 app.use('/users', usersRouter);
+app.use('/api/v1', marvelRouter)
 
 
 

@@ -1,21 +1,16 @@
 const express = require('express');
 const router = express.Router();
-
 //get MarvelAPI from models
-const Marvel = require('../models/marvel');
+// const Marvel = require('../models/api');
+const fetch = require('node-fetch');
 
-router.get('/', (req, res, next) => {
-  console.log(results, 'this is get all Marvel Characters')
+//GET ROUTE
+router.get('/',  (req, res, next) => {
   try {
-    const results = Marvel.find(data.results);
-    // doGetComics =  async (e) => {
-    //   e.preventDefault();
-    //   const results = await Marvel.find();
-    //response to react
-    res.json({
-      status: 200,
-      data: results
-    });
+    fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
+    .then(res => res.json())
+    .then(json => res.json({ char: json.data.results }))
+
   }catch(err){
     res.send(err)
   };
