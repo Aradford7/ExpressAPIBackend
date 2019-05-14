@@ -5,6 +5,7 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 //GET ROUTE
+//All characters
 router.get('/',  (req, res, next) => {
   try {
     fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
@@ -15,6 +16,7 @@ router.get('/',  (req, res, next) => {
     res.send(err)
   };
 });
+
 
 
 router.post('/', (req, res) => {
