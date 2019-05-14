@@ -5,7 +5,8 @@ const router = express.Router();
 const fetch = require('node-fetch');
 
 //GET ROUTE
-//All characters
+
+//get character id request from api then json and send response characters/comics (comics characters are in)
 router.get("/character/:id", (req,res)=>{
   try {
     fetch(`https://gateway.marvel.com:443/v1/public/characters/${req.params.id}/comics?ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
@@ -15,7 +16,7 @@ router.get("/character/:id", (req,res)=>{
     res.send(err)
   };
 })
-
+//get character name from api based on searching by nameStartsWith and send results
 router.get('/:name',  (req, res, next) => {
   try {
     fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${req.params.name}&ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
@@ -26,6 +27,19 @@ router.get('/:name',  (req, res, next) => {
   };
 });
 
+
+//get comics id from comics results and show information title, img, description
+// (be able to later add to user favorites)
+
+// router.get('/:comic/:id',  (req, res, next) => {
+//   try {
+//     fetch(`https://gateway.marvel.com:443/v1/public/comics/${req.params.id}&ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
+//     .then(res => res.json())
+//     .then(json => res.json({comic: json.data.results }))
+//   }catch(err){
+//     res.send(err)
+//   };
+// });
 
 
 router.post('/', (req, res) => {
