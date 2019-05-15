@@ -3,6 +3,11 @@ const mongoose = require('mongoose')
 const UserSchema = new mongoose.Schema({
   username: String,
   password: String,
+  favorite:[{
+    title: String,
+    id: String,
+    picture: String
+  }]
 //For Favorite List
   // results:[
   //   {

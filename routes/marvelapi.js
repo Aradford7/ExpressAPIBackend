@@ -10,7 +10,9 @@ router.get("/character/:id", (req,res)=>{
   try {
     fetch(`https://gateway.marvel.com:443/v1/public/characters/${req.params.id}/comics?ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
     .then(res => res.json())
-    .then(json => res.json({comics: json.data.results, success: true}))
+    .then(json => res.json({
+      comics: json.data.results,
+      success: true}))
   }catch(err){
     res.send(err)
   };
@@ -18,9 +20,14 @@ router.get("/character/:id", (req,res)=>{
 //get character name from api based on searching by nameStartsWith and send results
 router.get('/:name',  (req, res, next) => {
   try {
+    console.log(req.params.name,'==========')
     fetch(`https://gateway.marvel.com:443/v1/public/characters?nameStartsWith=${req.params.name}&ts=thesoer&apikey=c4bed87b70142a7ee8645e5466f98334&hash=f65084c44934b7db642943416b484ac9`)
     .then(res => res.json())
-    .then(json => res.json({ char: json.data.results }))
+    .then(json => res.json({ 
+      char: json.data.results,
+      comics: json.data.results,
+      success:true 
+    }))
   }catch(err){
     res.send(err)
   };
