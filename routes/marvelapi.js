@@ -4,8 +4,7 @@ const router = express.Router();
 // const Marvel = require('../models/api');
 const fetch = require('node-fetch');
 
-//GET ROUTE
-
+//GET ROUTES
 //get character id request from api then json and send response characters/comics (comics characters are in)
 router.get("/character/:id", (req,res)=>{
   try {
@@ -26,8 +25,6 @@ router.get('/:name',  (req, res, next) => {
     res.send(err)
   };
 });
-
-
 //get comics id from comics results and show information title, img, description
 // (be able to later add to user favorites)
 
@@ -40,7 +37,6 @@ router.get('/:name',  (req, res, next) => {
 //     res.send(err)
 //   };
 // });
-
 
 router.post('/', (req, res) => {
   return res.json({
