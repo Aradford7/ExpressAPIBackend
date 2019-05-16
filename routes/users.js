@@ -66,14 +66,6 @@ router.post('/:id/comic', async (req,res) => {
     res.json({
       user: foundUser
     })
-  //find user and access their favorite array
-  //push comic into the array
-  //save the user
-
-  // const foundFavorite = await Favorite.find({})
-  // .then(res => res.json())
-  // .then(json => res.json({ comic: json.data.results }))
-  // res.render('/posts')  //return all favorites
   }catch(err){
     res.json({err})
   }
@@ -119,18 +111,18 @@ router.post('/:id/comic', async (req,res) => {
 // router.delete('/', (req, res) => {
 //   return res.json({data: 'Received a DELETE HTTP method user'});
 // });
-// router.delete("/:id", async (req,res) => {
-//   try{
-//     const deletedFavorite = await User.findByIdAndRemove(req.params.id);
-//     _id:{
-//       $in: deletedFavorites.comics
-//     }
-//     return res.json({comic:json.data.results})
-//     res.redirect('/posts');
-//   }catch(err){
-//     res.json(err);
-//   }
-//   });
+
+router.delete("/:id/comic", async (req,res) => {
+  try{
+    const deletedFavorite = await User.findByIdAndRemove(req.params.id);
+    _id:{
+      $in: deletedFavorites.comics
+    }
+    return res.json({comic:json.data.results})
+  }catch(err){
+    res.json(err);
+  }
+  });
 
 
 

@@ -6,7 +6,7 @@ const UserSchema = new mongoose.Schema({
   favorite:[{
     title: String,
     id: String,
-    picture: String
+    images: String
   }]
 //For Favorite List
   // results:[
